@@ -1,0 +1,23 @@
+{
+  "name": "parcel_san_hello_world",
+  "version": "0.0.1",
+  "description": "使用parcel和san构建一个HelloWolrd应用",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel index.html",
+    "dev": "npm run start",
+    "build": "parcel build index.html"
+  },
+  "keywords": [
+    "parcel",
+    "san",
+    "helloWorld"
+  ],
+  "author": "ziling",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-preset-env": "^1.7.0",
+    "parcel-bundler": "^1.8.1"
+  }
+}
