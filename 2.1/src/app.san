@@ -1,0 +1,66 @@
+<template>
+    <div>
+        <div class="input-area">
+            <input type="text" name="nick" value="{=nick=}" placeholder="姓名">
+            <input type="number" name="age" value="{=age=}" placeholder="年龄" on-input="setAge">
+            <input type="text" name="summary" value="{=summary=}" placeholder="简介">
+        </div>
+        <p>信息：
+            <button on-click="clearInfo">移除信息</button>
+        </p>
+        <div class="info-area">
+            <p>姓名：{{nick}}</p>
+            <p>年龄：{{age}}</p>
+            <p>简介：{{summary}}</p>
+        </div>
+    </div>
+</template>
+
+<script>
+    import {DataTypes} from 'san';
+
+    export default {
+        initData: function () {
+            return {
+                person: {
+                    nick: undefined,
+                    age: undefined,
+                    summary: undefined,
+                }
+            }
+        },
+        dataTypes: {
+            person: DataTypes.shape({
+                nick: DataTypes.string,
+                age: DataTypes.number,
+                summary: DataTypes.string,
+            }),
+        },
+        setNick: function () {
+            this.data.set('person.nick', this.data.get('name'));
+        },
+        setAge: function () {
+            this.data.set('person.age', isNaN(+this.data.get('age')) ? undefined : +this.data.get('age'));
+        },
+        setSummary: function () {
+            this.data.set('person.summary', this.data.get('name'));
+        },
+        clearInfo: function () {
+            const _this = this;
+            _this.data.set("person", {
+                name: undefined,
+                age: undefined,
+                des: undefined
+            });
+            ['nick', 'age', 'summary'].forEach(function (v, i, _) {
+                _this.data.set(v, undefined);
+            });
+        },
+    };
+</script>
+
+<style>
+    .input-area {
+
+    }
+</style>
