@@ -23,4 +23,5 @@ module.exports = {
       },
     ],
   },
+  // devtool: '#cheap-module-eval-source-map' // 这样便于调试
 };
